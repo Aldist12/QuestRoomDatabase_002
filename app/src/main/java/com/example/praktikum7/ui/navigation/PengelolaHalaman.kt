@@ -11,6 +11,9 @@ import com.example.praktikum7.ui.View.mahasiswa.DestinasiInsert
 import com.example.praktikum7.ui.View.mahasiswa.InsertMhsView
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.praktikum7.ui.View.mahasiswa.DetailMhsView
+import com.example.praktikum7.ui.View.mahasiswa.HomeMhsView
+import com.example.praktikum7.ui.View.mahasiswa.UpdateMhsView
 
 @Composable
 fun PengelolaHalaman(
@@ -59,19 +62,19 @@ fun PengelolaHalaman(
                         navController.popBackStack()
                     }
                 )
-            composable(
-                route = DestinasiInsert.route
-            ) {
-                InsertMhsView(
-                    onBack = {
-                        navController.popBackStack()
-                    },
-                    onNavigate = {
-                        navController.popBackStack()
-                    },
-                    modifier = modifier,
-                )
-            }
+                composable(
+                    route = DestinasiInsert.route
+                ) {
+                    InsertMhsView(
+                        onBack = {
+                            navController.popBackStack()
+                        },
+                        onNavigate = {
+                            navController.popBackStack()
+                        },
+                        modifier = modifier,
+                    )
+                }
                 @Composable
                 fun PengelolaHalaman(
                     navController: NavHostController = rememberNavController(),
@@ -155,7 +158,8 @@ fun PengelolaHalaman(
                     }
                 }
 
-        }
+            }
 
+        }
     }
 }
