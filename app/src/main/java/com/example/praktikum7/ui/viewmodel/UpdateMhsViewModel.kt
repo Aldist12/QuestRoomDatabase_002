@@ -45,7 +45,7 @@ fun updateData() {
     if (validateFields()) {
         viewModelScope.launch {
             try {
-                repositoryMhs.updateMhs(currentEvent.toMahasiswaEntity())
+                RepositoryMhs.updateMhs(currentEvent.toMahasiswaEntity())
                 updateUIState = updateUIState.copy(
                     snackbarMessage = "Data berhasil diupdate",
                     mahasiswaEvent = MahasiswaEvent(),
