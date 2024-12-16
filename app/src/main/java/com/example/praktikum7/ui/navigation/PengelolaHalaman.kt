@@ -11,16 +11,28 @@ import com.example.praktikum7.ui.View.mahasiswa.InsertMhsView
 import androidx.navigation.compose.composable
 
 @Composable
-fun PengelolaHalamna(
+fun PengelolaHalaman(
     navController: NavHostController = rememberNavController(),
     modifier: Modifier = Modifier
-){
-    NavHost(navController = navController, startDestination = DestinasiInsert.route) {
+) {
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiHome.route
+    ) {
         composable(
-            route = DestinasiInsert.route
-        ){
-            InsertMhsView(
-                onBack = {}, onNavigate = {}
+            route = DestinasiHome.route
+        ) {
+            HomeMhsView(
+                onDetailClick = { nim ->
+                    navController.navigate("${DestinasiDetail.route}/$nim")
+                    println(
+                        "PengelolaHalaman: nim = $nim"
+                    )
+                },
+                onAddMhs = {
+                    navController.navigate(DestinasiInsert.route)
+                },
+                modifier = modifier
             )
         }
     }
