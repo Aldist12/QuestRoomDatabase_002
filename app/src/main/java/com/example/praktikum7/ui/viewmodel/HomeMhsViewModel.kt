@@ -32,6 +32,13 @@ val homeUiState: StateFlow<HomeUiState> = RepositoryMhs.getAllMhs()
             )
         )
     }
+    .stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = HomeUiState(
+            isLoading = true,
+        )
+    )
 
 
 
