@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.praktikum7.data.entity.Mahasiswa
 import com.example.praktikum7.repository.RepositoryMhs
 import kotlinx.coroutines.launch
 
@@ -66,3 +67,7 @@ fun updateData() {
 fun resetSnackBarMessage() {
     updateUIState = updateUIState.copy(snackbarMessage = null)
 }
+fun Mahasiswa.toUiStateMhs(): MhsUIState = MhsUIState(
+    mahasiswaEvent = this.toDetailUiEvent()
+)
+
