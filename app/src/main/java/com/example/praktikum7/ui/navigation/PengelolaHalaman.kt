@@ -4,11 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.praktikum7.ui.View.mahasiswa.DestinasiInsert
 import com.example.praktikum7.ui.View.mahasiswa.InsertMhsView
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 
 @Composable
 fun PengelolaHalaman(
@@ -35,5 +37,30 @@ fun PengelolaHalaman(
                 modifier = modifier
             )
         }
+        composable(
+            DestinasiDetail.routesWithArg,
+            arguments = listOf(
+                navArgument(DestinasiDetail.NIM) {
+                    type = NavType.StringType
+                }
+            )
+        ) {
+            val nim = it.arguments?.getString(DestinasiDetail.NIM)
+            nim?.let { nim ->
+                DetailMhsView(
+                    onBack = {
+                        navController.popBackStack()
+                    },
+                    onEditClick = {
+                        navController.navigate("${DestinasiUpdate.route}/$it")
+                    },
+                    modifier = modifier,
+                    onDeleteClick = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+        }
+
     }
 }
