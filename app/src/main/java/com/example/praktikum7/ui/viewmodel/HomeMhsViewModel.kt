@@ -52,6 +52,3 @@ data class HomeUiState(
     val isError: Boolean = false,
     val errorMessage: String = ""
 )
-
-
-
