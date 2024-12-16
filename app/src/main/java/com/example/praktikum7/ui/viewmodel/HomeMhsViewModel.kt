@@ -45,5 +45,12 @@ data class HomeUiState(
     val isError: Boolean = false,
     val errorMessage: String = ""
 )
+.map {
+    HomeUiState(
+        listMhs = it.toList(), // Memastikan data dikonversi ke List
+        isLoading = false,
+    )
+}
+
 
 
