@@ -63,3 +63,6 @@ fun updateData() {
         )
     }
 }
+fun resetSnackBarMessage() {
+    updateUIState = updateUIState.copy(snackbarMessage = null)
+}
