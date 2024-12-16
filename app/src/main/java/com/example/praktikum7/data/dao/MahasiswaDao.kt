@@ -8,7 +8,6 @@ import androidx.room.Update
 import com.example.praktikum7.data.entity.Mahasiswa
 import kotlinx.coroutines.flow.Flow
 
-
 @Dao
 interface MahasiswaDao {
     @Insert

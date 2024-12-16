@@ -60,26 +60,26 @@ class UpdateMhsViewModel(
                 try {
                     repositoryMhs.updateMhs(currentEvent.toMahasiswaEntity())
                     updateUIState = updateUIState.copy(
-                        snackBarMessage = "Data berhasil diupdate",
+                        snackbarMessage = "Data berhasil diupdate",
                         mahasiswaEvent = MahasiswaEvent(),
                         isEntryValid = FormErrorState()
                     )
-                    println("snackBarMessage diatur: ${updateUIState.snackBarMessage}")
+                    println("snackBarMessage diatur: ${updateUIState.snackbarMessage}")
                 } catch (e: Exception) {
                     updateUIState = updateUIState.copy(
-                        snackBarMessage = "Data gagal diupdate"
+                        snackbarMessage = "Data gagal diupdate"
                     )
                 }
             }
         } else {
             updateUIState = updateUIState.copy(
-                snackBarMessage = "Data gagal diupdate"
+                snackbarMessage = "Data gagal diupdate"
             )
         }
     }
 
     fun resetSnackBarMessage() {
-        updateUIState = updateUIState.copy(snackBarMessage = null)
+        updateUIState = updateUIState.copy(snackbarMessage = null)
     }
 }
 

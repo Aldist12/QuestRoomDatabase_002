@@ -1,5 +1,3 @@
-
-
 package com.example.praktikum7
 
 import android.os.Bundle
