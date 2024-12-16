@@ -3,6 +3,7 @@ package com.example.praktikum7.ui.View.mahasiswa
 import android.text.Layout.Alignment
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.CircularProgressIndicator
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.praktikum7.data.entity.Mahasiswa
 import com.example.praktikum7.ui.costumwidget.TopAppBar
 import com.example.praktikum7.ui.viewmodel.HomeMhsViewModel
 import com.example.praktikum7.ui.viewmodel.HomeUiState
@@ -119,5 +121,25 @@ fun HomeMhsView(
             }
         }
     }
+@Composable
+fun ListMahasiswa(
+    listMhs: List<Mahasiswa>,
+    modifier: Modifier = Modifier,
+    onCLick: (String) -> Unit = { }
+) {
+    LazyColumn(
+        modifier = modifier
+    ) {
+        items(
+            items = listMhs,
+            itemContent = { mhs ->
+                CardMhs(
+                    mhs = mhs,
+                    onClick = { onCLick(mhs.nim) }
+                )
+            }
+        )
+    }
+}
 
 }
