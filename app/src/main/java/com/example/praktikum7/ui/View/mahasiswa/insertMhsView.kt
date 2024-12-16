@@ -55,8 +55,8 @@ fun InsertMhsView(
     val snackbarHostState = remember { SnackbarHostState()}
     val corroutineScope = rememberCoroutineScope()
 
-    LaunchedEffect(uiState.snackBarMessage) {
-        uiState.snackBarMessage?.let { message ->
+    LaunchedEffect(uiState.snackbarMessage) {
+        uiState.snackbarMessage?.let { message ->
             corroutineScope.launch {
                 snackbarHostState.showSnackbar(message)
                 viewModel.resetSnackBarMessage()
@@ -87,7 +87,7 @@ fun InsertMhsView(
 
                 },
                 onClick = {
-                    viewModel.savedata()
+                    viewModel.saveData()
                     onNavigate()
                 }
             )
