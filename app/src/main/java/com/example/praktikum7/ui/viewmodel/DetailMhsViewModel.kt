@@ -39,3 +39,11 @@ val detailUiEvent: StateFlow<DetailUiState> = RepositoryMhs.getMhs(_nim)
             isLoading = true,
         )
     )
+fun deleteMhs() {
+    detailUiEvent.value.detailUiEvent.toMahasiswaEntity().let {
+        viewModelScope.launch {
+            RepositoryMhs.deleteMhs(it)
+        }
+    }
+}
+
