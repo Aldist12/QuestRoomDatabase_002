@@ -47,9 +47,13 @@ data class HomeUiState(
 )
 .map {
     HomeUiState(
-        listMhs = it.toList(), // Memastikan data dikonversi ke List
+        listMhs = it.toList(),
         isLoading = false,
     )
+}
+.onStart {
+    emit(HomeUiState(isLoading = true))
+    delay(900)
 }
 
 
