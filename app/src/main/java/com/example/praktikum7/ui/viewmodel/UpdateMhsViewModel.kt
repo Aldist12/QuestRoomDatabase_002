@@ -38,4 +38,28 @@ fun validateFields(): Boolean {
     updateUIState = updateUIState.copy(isEntryValid = errorState)
     return errorState.isValid()
 }
+fun updateData() {
+    val currentEvent = updateUIState.mahasiswaEvent
 
+    if (validateFields()) {
+        viewModelScope.launch {
+            try {
+                repositoryMhs.updateMhs(currentEvent.toMahasiswaEntity())
+                updateUIState = updateUIState.copy(
+                    snackbarMessage = "Data berhasil diupdate",
+                    mahasiswaEvent = MahasiswaEvent(),
+                    isEntryValid = FormErrorState()
+                )
+                println("snackBarMessage diatur: ${updateUIState.snackbarMessage}")
+            } catch (e: Exception) {
+                updateUIState = updateUIState.copy(
+                    snackbarMessage = "Data gagal diupdate"
+                )
+            }
+        }
+    } else {
+        updateUIState = updateUIState.copy(
+            snackbarMessage = "Data gagal diupdate"
+        )
+    }
+}
