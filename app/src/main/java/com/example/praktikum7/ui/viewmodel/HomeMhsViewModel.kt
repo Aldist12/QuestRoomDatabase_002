@@ -32,29 +32,7 @@ val homeUiState: StateFlow<HomeUiState> = RepositoryMhs.getAllMhs()
             )
         )
     }
-    .stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000),
-        initialValue = HomeUiState(
-            isLoading = true,
-        )
-    )
-data class HomeUiState(
-    val listMhs: List<Mahasiswa> = listOf(),
-    val isLoading: Boolean = false,
-    val isError: Boolean = false,
-    val errorMessage: String = ""
-)
-.map {
-    HomeUiState(
-        listMhs = it.toList(),
-        isLoading = false,
-    )
-}
-.onStart {
-    emit(HomeUiState(isLoading = true))
-    delay(900)
-}
+
 
 
 
